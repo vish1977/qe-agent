@@ -56,15 +56,11 @@ Be thorough — this context drives all downstream QE decisions."""
         # Extract JSON from the response
         try:
             # Claude may wrap JSON in markdown code blocks
-            text = result.strip()
-            if "```" in text:
-                start = text.find("```json\n")
-                if start == -1:
-                    start = text.find("```\n")
-                end = text.rfind("```")
-                if start != -1 and end != -1:
-                    text = text[start + text[start:].find("\n") + 1 : end].strip()
-
+            text = result
+            start = text.find("{")
+            end = text.rfind("}")
+            if start != -1 and end != -1 and end > start:
+                text = text[start:end + 1]
             data = json.loads(text)
             changed_files = [ChangedFile(**f) for f in data.get("changed_files", [])]
             return PRContext(

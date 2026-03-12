@@ -152,6 +152,7 @@ class QEOrchestrator:
             state.impact,
             self.repo,
             self.repo_path,
+            state.event.payload,
         )
         console.print(f"  Generated [bold]{len(state.test_cases)}[/bold] test cases:")
         for tc in state.test_cases:

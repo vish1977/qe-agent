@@ -3,6 +3,7 @@
 import json
 import os
 import subprocess
+import sys
 import tempfile
 import uuid
 from datetime import datetime
@@ -32,7 +33,7 @@ def run_tests_locally(test_cases: list[dict]) -> str:
 
             start = datetime.utcnow()
             proc = subprocess.run(
-                ["python", "-m", "pytest", file_path, "--tb=short", "-q", "--no-header"],
+                [sys.executable, "-m", "pytest", file_path, "--tb=short", "-q", "--no-header"],
                 capture_output=True,
                 text=True,
                 timeout=60,

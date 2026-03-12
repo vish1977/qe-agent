@@ -56,15 +56,11 @@ Steps:
         result = self.run(prompt)
 
         try:
-            text = result.strip()
-            if "```" in text:
-                start = text.find("```json\n")
-                if start == -1:
-                    start = text.find("```\n")
-                end = text.rfind("```")
-                if start != -1 and end != -1:
-                    text = text[start + text[start:].find("\n") + 1: end].strip()
-
+            text = result
+            start = text.find("{")
+            end = text.rfind("}")
+            if start != -1 and end != -1 and end > start:
+                text = text[start:end + 1]
             data = json.loads(text)
             return ImpactAnalysis(
                 affected_modules=data.get("affected_modules", []),

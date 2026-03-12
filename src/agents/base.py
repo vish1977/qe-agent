@@ -24,6 +24,7 @@ class BaseAgent:
 
     name: str = "base"
     tools: list[dict] = []
+    max_tokens: int = 8192
 
     def __init__(self) -> None:
         self.client = _client
@@ -47,7 +48,7 @@ class BaseAgent:
             # Stream the response (handles large outputs without timeout)
             with self.client.messages.stream(
                 model=config.CLAUDE_MODEL,
-                max_tokens=8192,
+                max_tokens=self.max_tokens,
                 thinking={"type": "adaptive"},
                 system=self._system_prompt(),
                 tools=self.tools,
@@ -61,6 +62,11 @@ class BaseAgent:
                 )
                 console.print(f"[bold green]✓ {self.name}[/bold green] done")
                 return text
+
+            if response.stop_reason == "max_tokens":
+                # Response was truncated — return what we have so parsers can try to recover
+                console.print(f"[yellow]⚠ {self.name}[/yellow] hit max_tokens limit")
+                return next((b.text for b in response.content if b.type == "text"), "")
 
             if response.stop_reason != "tool_use":
                 # Unexpected stop — return whatever text we have
