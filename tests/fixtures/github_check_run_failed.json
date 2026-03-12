@@ -1,0 +1,24 @@
+{
+  "action": "completed",
+  "check_run": {
+    "id": 9876543210,
+    "name": "test / unit-tests (ubuntu-latest)",
+    "status": "completed",
+    "conclusion": "failure",
+    "html_url": "https://github.com/acme/backend/runs/9876543210",
+    "head_sha": "abc1234def5678",
+    "pull_requests": [
+      { "number": 42, "url": "https://api.github.com/repos/acme/backend/pulls/42" }
+    ],
+    "output": {
+      "title": "3 tests failed",
+      "summary": "Tests failed: test_stripe_charge, test_stripe_refund, test_payment_webhook"
+    }
+  },
+  "repository": {
+    "id": 123456789,
+    "full_name": "acme/backend",
+    "private": false
+  },
+  "sender": { "login": "github-actions[bot]" }
+}

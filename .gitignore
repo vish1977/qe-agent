@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+qe_run_*.json
+.DS_Store

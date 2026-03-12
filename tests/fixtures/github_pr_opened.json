@@ -1,0 +1,35 @@
+{
+  "action": "opened",
+  "number": 42,
+  "pull_request": {
+    "url": "https://api.github.com/repos/acme/backend/pulls/42",
+    "html_url": "https://github.com/acme/backend/pull/42",
+    "number": 42,
+    "state": "open",
+    "title": "feat: add Stripe payment integration",
+    "body": "Implements Stripe checkout. Closes ACME-567.\n\n## Changes\n- Add `src/payments/stripe.py` with Stripe SDK wrapper\n- Add `src/payments/types.py` with payment type definitions\n- Add unit tests in `tests/payments/test_stripe.py`",
+    "merged": false,
+    "user": { "login": "dev-alice", "type": "User" },
+    "head": {
+      "ref": "feat/stripe-checkout",
+      "sha": "abc1234def5678",
+      "repo": { "full_name": "acme/backend" }
+    },
+    "base": {
+      "ref": "main",
+      "sha": "deadbeef1234",
+      "repo": { "full_name": "acme/backend" }
+    },
+    "changed_files": 8,
+    "additions": 312,
+    "deletions": 44,
+    "commits": 3
+  },
+  "repository": {
+    "id": 123456789,
+    "full_name": "acme/backend",
+    "private": false,
+    "html_url": "https://github.com/acme/backend"
+  },
+  "sender": { "login": "dev-alice" }
+}
