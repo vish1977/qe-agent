@@ -1,5 +1,7 @@
 # QE Agent
 
+[![CI](https://github.com/vish1977/qe-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/vish1977/qe-agent/actions/workflows/ci.yml)
+
 An autonomous quality engineering pipeline powered by [Claude Opus 4.6](https://anthropic.com). Monitors product signals (PRs, CI events, releases), generates and runs tests, analyzes failures, self-heals flaky tests, and files Jira bugs — all without human intervention.
 
 ## Architecture
